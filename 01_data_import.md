@@ -18,6 +18,7 @@ library(tidyverse)
 
 ``` r
 library(readxl)
+library(haven)
 ```
 
 Import our first dataset
@@ -238,4 +239,15 @@ tt_df =
     "data/LotR_Words.xlsx",
     range = "F3:H6"
   )
+```
+
+## Import SAS Files
+
+Read in Pulse Dataset
+
+``` r
+pulse_df = 
+  read_sas("data/public_pulse_data.sas7bdat")
+
+pulse_df = janitor::clean_names(pulse_df)
 ```
