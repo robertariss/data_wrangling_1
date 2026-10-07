@@ -2,3 +2,49 @@
 title: "Data Import"
 output: github_document
 ---
+
+```{r}
+library(tidyverse)
+```
+
+Import our first dataset
+
+```{r}
+litters_df = 
+  read_csv(file = "data/FAS_litters.csv")
+
+litters_df = janitor:::clean_names(litters_df)
+```
+
+Import our second dataset
+
+```{r}
+pups_df = 
+  read_csv(file= "data/FAS_pups.csv", skip = 3)
+
+pups_df = janitor:::clean_names(pups_df)
+```
+
+## Look at the data
+
+```{r}
+litters_df
+pups_df
+```
+
+Head or Tails
+
+```{r}
+head(litters_df, 20)
+
+tail(pups_df, 5)
+```
+
+Skimming??
+
+```{r}
+skimr::skim(pups_df)
+```
+
+
+
