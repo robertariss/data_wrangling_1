@@ -5,6 +5,7 @@ output: github_document
 
 ```{r}
 library(tidyverse)
+library(readxl)
 ```
 
 Import our first dataset
@@ -52,5 +53,40 @@ Skimming??
 skimr::skim(pups_df)
 ```
 
+## Oh excel...
 
+Jenny Bryan made 'readxl' to solve our problems. 
+
+```{r}
+mlb_df = 
+  read_excel("data/mlb11.xlsx")
+```
+
+Look at the data!
+
+```{r}
+mlb_df
+```
+
+Load  some of the LotR data.
+
+Import FOTR Words
+
+```{r}
+fotr_df = 
+  read_excel(
+    "data/LotR_Words.xlsx",
+    range = "B3:D6"
+  )
+```
+
+Import TT Words
+
+```{r}
+tt_df = 
+  read_excel(
+    "data/LotR_Words.xlsx",
+    range = "F3:H6"
+  )
+```
 
