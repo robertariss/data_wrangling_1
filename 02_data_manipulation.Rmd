@@ -90,3 +90,30 @@ mutate(litters_df,
        group = str_to_lower(group))
 ```
 
+## Do multiple steps..
+
+```{r}
+litters_df = 
+  read_csv("data/FAS_litters.csv", na = c("", "NA", ".")) |> 
+  janitor::clean_names() |> 
+  select(group, starts_with("gd")) |> 
+  drop_na() |> 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)
+  )
+```
+
+Load pups, clean anmes, drop missing, keep group and pd variables, add pd walk -7
+
+```{r}
+pups_df = 
+  read_csv("data/FAS_pups.csv", skip = 3) |> 
+  janitor::clean_names() |> 
+  drop_na() |> 
+  select(litter_number, starts_with("pd")) |> 
+  mutate(
+    pd_walk_minus_7 = pd_walk - 7,
+  )
+```
+
